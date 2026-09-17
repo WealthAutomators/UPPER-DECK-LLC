@@ -1,0 +1,529 @@
+{
+  "store": "UPPER DECK LLC",
+  "sourceLibrary": "~/Documents/Ecommerce-Product-Library",
+  "generatedAt": "2026-09-16",
+  "notes": "Library assets were copied into public/products/. The central library was not modified. Gallery -1/-2 may share a file when only one compatible asset existed. No library asset is reused across two products.",
+  "products": [
+    {
+      "productId": "p1",
+      "productName": "Tempo Knit Training Tee",
+      "category": "Performance",
+      "source": "retained",
+      "reason": "Worn white training tee is a clearer single-SKU shot than library t-shirt stack/hanger shots.",
+      "localImages": ["/products/tempo-knit-tee-1.jpg", "/products/tempo-knit-tee-2.jpg"],
+      "libraryAssets": []
+    },
+    {
+      "productId": "p2",
+      "productName": "Studio Sport Shorts",
+      "category": "Apparel",
+      "source": "library",
+      "localImages": ["/products/motion-training-shorts-1.jpg", "/products/motion-training-shorts-2.jpg"],
+      "libraryAssets": [
+        {
+          "id": "asset_025",
+          "filename": "casual-shorts-001.jpg",
+          "path": "images/apparel/casual-shorts-001.jpg",
+          "libraryName": "Casual Shorts",
+          "productType": "Shorts"
+        }
+      ]
+    },
+    {
+      "productId": "p3",
+      "productName": "Ridge Bomber Jacket",
+      "category": "Performance",
+      "source": "retained",
+      "reason": "Library jackets were a child's rain jacket and a branded denim jacket — weaker product shots.",
+      "localImages": ["/products/ridge-softshell-1.jpg", "/products/ridge-softshell-2.jpg"],
+      "libraryAssets": []
+    },
+    {
+      "productId": "p4",
+      "productName": "Pulse Trucker Cap",
+      "category": "Performance",
+      "source": "retained",
+      "reason": "Current studio trucker cap is a cleaner SKU shot than library caps with third-party logos.",
+      "localImages": ["/products/pulse-cap-1.jpg", "/products/pulse-cap-2.jpg"],
+      "libraryAssets": []
+    },
+    {
+      "productId": "p5",
+      "productName": "Relay Cotton Training Tee",
+      "category": "Performance",
+      "source": "library",
+      "localImages": ["/products/relay-boxy-tee-1.jpg", "/products/relay-boxy-tee-2.jpg"],
+      "libraryAssets": [
+        {
+          "id": "asset_028",
+          "filename": "cotton-tshirt-002.jpg",
+          "path": "images/apparel/cotton-tshirt-002.jpg",
+          "libraryName": "Cotton T-Shirt",
+          "productType": "T-Shirt"
+        }
+      ]
+    },
+    {
+      "productId": "p6",
+      "productName": "City Commute Pack",
+      "category": "Outdoor",
+      "source": "retained",
+      "reason": "Clean black commute pack; uniquified by assigning other backpacks to p18/p20.",
+      "localImages": ["/products/trail-28-pack-1.jpg", "/products/trail-28-pack-2.jpg"],
+      "libraryAssets": []
+    },
+    {
+      "productId": "p7",
+      "productName": "Summit 32oz Bottle",
+      "category": "Outdoor",
+      "source": "retained",
+      "reason": "Valid insulated bottle photo; uniquified by giving p19/p33 other bottle assets.",
+      "localImages": ["/products/summit-bottle-1.jpg", "/products/summit-bottle-2.jpg"],
+      "libraryAssets": []
+    },
+    {
+      "productId": "p8",
+      "productName": "Compact Camp Tent",
+      "category": "Outdoor",
+      "source": "library",
+      "localImages": ["/products/compact-camp-tent-1.jpg", "/products/compact-camp-tent-2.jpg"],
+      "libraryAssets": [
+        {
+          "id": "asset_163",
+          "filename": "camping-tent-001.jpg",
+          "path": "images/outdoor/camping-tent-001.jpg",
+          "libraryName": "Camping Tent",
+          "productType": "Tent"
+        }
+      ]
+    },
+    {
+      "productId": "p9",
+      "productName": "Moto Field Jacket",
+      "category": "Outdoor",
+      "source": "retained",
+      "reason": "Leather moto jacket matches the product; library denim/rain jackets did not.",
+      "localImages": ["/products/storm-packable-shell-1.jpg", "/products/storm-packable-shell-2.jpg"],
+      "libraryAssets": []
+    },
+    {
+      "productId": "p10",
+      "productName": "Starlight Camp Tent",
+      "category": "Outdoor",
+      "source": "retained",
+      "reason": "Unique night-camp tent photo; distinct from p8 library tent.",
+      "localImages": ["/products/trail-camp-light-1.jpg", "/products/trail-camp-light-2.jpg"],
+      "libraryAssets": []
+    },
+    {
+      "productId": "p11",
+      "productName": "Studio Grip Yoga Mat",
+      "category": "Training",
+      "source": "library",
+      "localImages": ["/products/studio-grip-mat-1.jpg", "/products/studio-grip-mat-2.jpg"],
+      "libraryAssets": [
+        {
+          "id": "asset_076",
+          "filename": "yoga-mat-001.jpg",
+          "path": "images/fitness-wellness/yoga-mat-001.jpg",
+          "libraryName": "Yoga Mat",
+          "productType": "Yoga Mat"
+        },
+        {
+          "id": "asset_077",
+          "filename": "yoga-mat-002.jpg",
+          "path": "images/fitness-wellness/yoga-mat-002.jpg",
+          "libraryName": "Yoga Mat",
+          "productType": "Yoga Mat"
+        }
+      ]
+    },
+    {
+      "productId": "p12",
+      "productName": "Adjustable Weight Bench",
+      "category": "Training",
+      "source": "library",
+      "localImages": ["/products/five-loop-bands-1.jpg", "/products/five-loop-bands-2.jpg"],
+      "libraryAssets": [
+        {
+          "id": "asset_074",
+          "filename": "weight-bench-001.jpg",
+          "path": "images/fitness-wellness/weight-bench-001.jpg",
+          "libraryName": "Weight Bench",
+          "productType": "Weight Bench"
+        }
+      ]
+    },
+    {
+      "productId": "p13",
+      "productName": "Parallette Push-Up Bars",
+      "category": "Training",
+      "source": "retained",
+      "reason": "No library parallettes; current gym photo matches the product. Library foam roller was branded.",
+      "localImages": ["/products/recovery-foam-roller-1.jpg", "/products/recovery-foam-roller-2.jpg"],
+      "libraryAssets": []
+    },
+    {
+      "productId": "p14",
+      "productName": "Studio Dumbbell Set",
+      "category": "Training",
+      "source": "library",
+      "localImages": ["/products/weighted-speed-rope-1.jpg", "/products/weighted-speed-rope-2.jpg"],
+      "libraryAssets": [
+        {
+          "id": "asset_066",
+          "filename": "dumbbells-001.jpg",
+          "path": "images/fitness-wellness/dumbbells-001.jpg",
+          "libraryName": "Dumbbells",
+          "productType": "Dumbbell"
+        }
+      ]
+    },
+    {
+      "productId": "p15",
+      "productName": "Cast Iron Kettlebell",
+      "category": "Training",
+      "source": "library",
+      "localImages": ["/products/cast-iron-kettlebell-1.jpg", "/products/cast-iron-kettlebell-2.jpg"],
+      "libraryAssets": [
+        {
+          "id": "asset_070",
+          "filename": "kettlebell-001.jpg",
+          "path": "images/fitness-wellness/kettlebell-001.jpg",
+          "libraryName": "Kettlebell",
+          "productType": "Kettlebell"
+        }
+      ]
+    },
+    {
+      "productId": "p16",
+      "productName": "Weekender Duffel Bag",
+      "category": "Travel",
+      "source": "library",
+      "localImages": ["/products/weekender-duffel-1.jpg", "/products/weekender-duffel-2.jpg"],
+      "libraryAssets": [
+        {
+          "id": "asset_183",
+          "filename": "weekender-duffel-bag-001.jpg",
+          "path": "images/travel-bags/weekender-duffel-bag-001.jpg",
+          "libraryName": "Weekender Duffel Bag",
+          "productType": "Weekender Bag"
+        }
+      ]
+    },
+    {
+      "productId": "p17",
+      "productName": "Hard-Shell Luggage Set",
+      "category": "Travel",
+      "source": "retained",
+      "reason": "Current spinner luggage is a clearer SKU than library vintage Samsonite cases.",
+      "localImages": ["/products/packing-cube-trio-1.jpg", "/products/packing-cube-trio-2.jpg"],
+      "libraryAssets": []
+    },
+    {
+      "productId": "p18",
+      "productName": "Canvas Field Rucksack",
+      "category": "Travel",
+      "source": "library",
+      "localImages": ["/products/cabin-backpack-1.jpg", "/products/cabin-backpack-2.jpg"],
+      "libraryAssets": [
+        {
+          "id": "asset_189",
+          "filename": "canvas-daypack-001.jpg",
+          "path": "images/travel-bags/canvas-daypack-001.jpg",
+          "libraryName": "Canvas Daypack",
+          "productType": "Daypack"
+        }
+      ]
+    },
+    {
+      "productId": "p19",
+      "productName": "Aluminium Sports Bottle",
+      "category": "Travel",
+      "source": "library",
+      "localImages": ["/products/travel-bottle-set-1.jpg", "/products/travel-bottle-set-2.jpg"],
+      "libraryAssets": [
+        {
+          "id": "asset_072",
+          "filename": "aluminium-sports-bottle-001.jpg",
+          "path": "images/fitness-wellness/aluminium-sports-bottle-001.jpg",
+          "libraryName": "Aluminium Sports Bottle",
+          "productType": "Sports Bottle"
+        }
+      ]
+    },
+    {
+      "productId": "p20",
+      "productName": "Packable City Pack",
+      "category": "Travel",
+      "source": "library",
+      "localImages": ["/products/packable-day-sack-1.jpg", "/products/packable-day-sack-2.jpg"],
+      "libraryAssets": [
+        {
+          "id": "asset_198",
+          "filename": "travel-backpack-001.jpg",
+          "path": "images/travel-bags/travel-backpack-001.jpg",
+          "libraryName": "Travel Backpack",
+          "productType": "Backpack"
+        }
+      ]
+    },
+    {
+      "productId": "p21",
+      "productName": "Heavyweight Fleece Hoodie",
+      "category": "Apparel",
+      "source": "retained",
+      "reason": "Library hoodies had third-party text or a face cutout.",
+      "localImages": ["/products/heavyweight-hoodie-1.jpg", "/products/heavyweight-hoodie-2.jpg"],
+      "libraryAssets": []
+    },
+    {
+      "productId": "p22",
+      "productName": "Open Knit Poncho",
+      "category": "Apparel",
+      "source": "retained",
+      "reason": "Current poncho matches the name; library sweater was a fabric close-up of many knits.",
+      "localImages": ["/products/merino-long-sleeve-1.jpg", "/products/merino-long-sleeve-2.jpg"],
+      "libraryAssets": []
+    },
+    {
+      "productId": "p23",
+      "productName": "Classic Crew Sweatshirt",
+      "category": "Apparel",
+      "source": "retained",
+      "reason": "Library crewneck showed third-party branding.",
+      "localImages": ["/products/trail-quarter-zip-1.jpg", "/products/trail-quarter-zip-2.jpg"],
+      "libraryAssets": []
+    },
+    {
+      "productId": "p24",
+      "productName": "Everyday Cotton Tee",
+      "category": "Apparel",
+      "source": "library",
+      "localImages": ["/products/everyday-knit-polo-1.jpg", "/products/everyday-knit-polo-2.jpg"],
+      "libraryAssets": [
+        {
+          "id": "asset_027",
+          "filename": "cotton-tshirt-001.jpg",
+          "path": "images/apparel/cotton-tshirt-001.jpg",
+          "libraryName": "Cotton T-Shirt",
+          "productType": "T-Shirt"
+        }
+      ]
+    },
+    {
+      "productId": "p25",
+      "productName": "Lined Training Joggers",
+      "category": "Apparel",
+      "source": "retained",
+      "reason": "Library trousers were vintage striped heritage pants, not training joggers.",
+      "localImages": ["/products/lined-training-joggers-1.jpg", "/products/lined-training-joggers-2.jpg"],
+      "libraryAssets": []
+    },
+    {
+      "productId": "p26",
+      "productName": "Colorblock Court Sneaker",
+      "category": "Footwear",
+      "source": "retained",
+      "reason": "Current court sneakers are a clearer athletic SKU than library canvas sneakers.",
+      "localImages": ["/products/court-trainer-1.jpg", "/products/court-trainer-2.jpg"],
+      "libraryAssets": []
+    },
+    {
+      "productId": "p27",
+      "productName": "Ridge Hiking Boot",
+      "category": "Footwear",
+      "source": "retained",
+      "reason": "Valid hiking-boot photo; uniquified by assigning library boots to p29.",
+      "localImages": ["/products/ridge-trail-runner-1.jpg", "/products/ridge-trail-runner-2.jpg"],
+      "libraryAssets": []
+    },
+    {
+      "productId": "p28",
+      "productName": "Cap-Toe Leather Sneaker",
+      "category": "Footwear",
+      "source": "retained",
+      "reason": "Valid leather sneaker; uniquified by assigning running shoes to p30.",
+      "localImages": ["/products/rest-slide-1.jpg", "/products/rest-slide-2.jpg"],
+      "libraryAssets": []
+    },
+    {
+      "productId": "p29",
+      "productName": "Approach Hiking Boot",
+      "category": "Footwear",
+      "source": "library",
+      "localImages": ["/products/approach-hiking-shoe-1.jpg", "/products/approach-hiking-shoe-2.jpg"],
+      "libraryAssets": [
+        {
+          "id": "asset_171",
+          "filename": "hiking-boots-002.jpg",
+          "path": "images/outdoor/hiking-boots-002.jpg",
+          "libraryName": "Hiking Boots",
+          "productType": "Hiking Boots"
+        },
+        {
+          "id": "asset_172",
+          "filename": "hiking-boots-003.jpg",
+          "path": "images/outdoor/hiking-boots-003.jpg",
+          "libraryName": "Hiking Boots",
+          "productType": "Hiking Boots"
+        }
+      ]
+    },
+    {
+      "productId": "p30",
+      "productName": "Daily Mesh Trainer",
+      "category": "Footwear",
+      "source": "library",
+      "localImages": ["/products/daily-knit-trainer-1.jpg", "/products/daily-knit-trainer-2.jpg"],
+      "libraryAssets": [
+        {
+          "id": "asset_073",
+          "filename": "running-shoes-001.jpg",
+          "path": "images/fitness-wellness/running-shoes-001.jpg",
+          "libraryName": "Running Shoes",
+          "productType": "Running Shoes"
+        }
+      ]
+    },
+    {
+      "productId": "p31",
+      "productName": "Round Field Sunglasses",
+      "category": "Accessories",
+      "source": "retained",
+      "reason": "Studio round metals are a cleaner SKU than library wayfarers/desk glasses.",
+      "localImages": ["/products/field-sunglasses-1.jpg", "/products/field-sunglasses-2.jpg"],
+      "libraryAssets": []
+    },
+    {
+      "productId": "p32",
+      "productName": "Trail Watch Cap",
+      "category": "Accessories",
+      "source": "library",
+      "localImages": ["/products/watch-cap-beanie-1.jpg", "/products/watch-cap-beanie-2.jpg"],
+      "libraryAssets": [
+        {
+          "id": "asset_035",
+          "filename": "knit-beanie-001.jpg",
+          "path": "images/apparel/knit-beanie-001.jpg",
+          "libraryName": "Knit Beanie",
+          "productType": "Beanie"
+        }
+      ]
+    },
+    {
+      "productId": "p33",
+      "productName": "Insulated Travel Tumbler",
+      "category": "Accessories",
+      "source": "library",
+      "localImages": ["/products/insulated-camp-mug-1.jpg", "/products/insulated-camp-mug-2.jpg"],
+      "libraryAssets": [
+        {
+          "id": "asset_132",
+          "filename": "insulated-travel-tumbler-001.jpg",
+          "path": "images/kitchen-dining/insulated-travel-tumbler-001.jpg",
+          "libraryName": "Insulated Travel Tumbler",
+          "productType": "Travel Tumbler"
+        }
+      ]
+    },
+    {
+      "productId": "p34",
+      "productName": "Cotton Gym Towel",
+      "category": "Accessories",
+      "source": "library",
+      "localImages": ["/products/microfiber-gym-towel-1.jpg", "/products/microfiber-gym-towel-2.jpg"],
+      "libraryAssets": [
+        {
+          "id": "asset_078",
+          "filename": "bath-towel-set-001.jpg",
+          "path": "images/gifts-lifestyle/bath-towel-set-001.jpg",
+          "libraryName": "Bath Towel Set",
+          "productType": "Bath Towel"
+        }
+      ]
+    },
+    {
+      "productId": "p35",
+      "productName": "Training Boxing Gloves",
+      "category": "Accessories",
+      "source": "library",
+      "localImages": ["/products/training-grip-gloves-1.jpg", "/products/training-grip-gloves-2.jpg"],
+      "libraryAssets": [
+        {
+          "id": "asset_065",
+          "filename": "boxing-gloves-001.jpg",
+          "path": "images/fitness-wellness/boxing-gloves-001.jpg",
+          "libraryName": "Boxing Gloves",
+          "productType": "Boxing Gloves"
+        }
+      ]
+    },
+    {
+      "productId": "p36",
+      "productName": "Slim Field Wallet",
+      "category": "Everyday Carry",
+      "source": "retained",
+      "reason": "Current leather wallet clearly represents the product.",
+      "localImages": ["/products/slim-field-wallet-1.jpg", "/products/slim-field-wallet-2.jpg"],
+      "libraryAssets": []
+    },
+    {
+      "productId": "p37",
+      "productName": "Leather Commute Pack",
+      "category": "Everyday Carry",
+      "source": "retained",
+      "reason": "Studio cognac leather backpack is a strong SKU shot.",
+      "localImages": ["/products/everyday-commute-bag-1.jpg", "/products/everyday-commute-bag-2.jpg"],
+      "libraryAssets": []
+    },
+    {
+      "productId": "p38",
+      "productName": "Field Notebook",
+      "category": "Everyday Carry",
+      "source": "retained",
+      "reason": "Current notebook-in-use photo matches; library notebooks were busier vintage stills.",
+      "localImages": ["/products/tech-organizer-pouch-1.jpg", "/products/tech-organizer-pouch-2.jpg"],
+      "libraryAssets": []
+    },
+    {
+      "productId": "p39",
+      "productName": "Compact Field Flashlight",
+      "category": "Outdoor",
+      "source": "library",
+      "localImages": ["/products/compact-field-light-1.jpg", "/products/compact-field-light-2.jpg"],
+      "libraryAssets": [
+        {
+          "id": "asset_167",
+          "filename": "flashlight-001.jpg",
+          "path": "images/outdoor/flashlight-001.jpg",
+          "libraryName": "Flashlight",
+          "productType": "Flashlight"
+        },
+        {
+          "id": "asset_168",
+          "filename": "flashlight-002.jpg",
+          "path": "images/outdoor/flashlight-002.jpg",
+          "libraryName": "Flashlight",
+          "productType": "Flashlight"
+        }
+      ]
+    },
+    {
+      "productId": "p40",
+      "productName": "Ridge Trekking Poles",
+      "category": "Outdoor",
+      "source": "library",
+      "localImages": ["/products/trail-hiking-poles-1.jpg", "/products/trail-hiking-poles-2.jpg"],
+      "libraryAssets": [
+        {
+          "id": "asset_178",
+          "filename": "trekking-poles-001.jpg",
+          "path": "images/outdoor/trekking-poles-001.jpg",
+          "libraryName": "Trekking Poles",
+          "productType": "Trekking Poles"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="280" height="44" viewBox="0 0 280 44" fill="none">
+  <rect x="0" y="4" width="36" height="36" fill="#FFFFFF"/>
+  <path d="M6 32H30" stroke="#1E6BFF" stroke-width="2"/>
+  <path d="M8 26L18 16L28 26" stroke="#0B0D10" stroke-width="2" fill="none"/>
+  <path d="M10 30L18 22L26 30" stroke="#0B0D10" stroke-width="2" fill="none"/>
+  <text
+    x="48"
+    y="28"
+    fill="#FFFFFF"
+    font-family="Arial Narrow, Arial, Helvetica, sans-serif"
+    font-size="22"
+    font-weight="700"
+    letter-spacing="3"
+  >UPPER DECK</text>
+</svg>

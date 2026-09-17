@@ -1,17 +1,15 @@
-# AAM Partners LLC
+# UPPER DECK LLC
 
-A production-quality, reusable ecommerce storefront template built with Next.js App Router, TypeScript, and Tailwind CSS.
-
-This is the master template for AAM Partners LLC — a general marketplace selling electronics, home essentials, beauty, toys, pet supplies, and more. Duplicate this repository and swap brand assets, colors, and data to launch new stores without rewriting components.
+A production-quality ecommerce storefront for UPPER DECK — a modern sporting and lifestyle retailer — built with Next.js App Router, TypeScript, and Tailwind CSS.
 
 ## Tech Stack
 
-- **Next.js 15** (App Router)
+- **Next.js** (App Router)
 - **TypeScript**
 - **Tailwind CSS v4**
 - **shadcn/ui** (Radix primitives)
 - **Lucide Icons**
-- **Framer Motion** (subtle animations)
+- **Framer Motion**
 - **Embla Carousel**
 - **React Context** (cart, wishlist, recently viewed)
 - **localStorage** persistence (no backend)
@@ -30,13 +28,11 @@ npm run build   # Production build
 npm run start   # Start production server
 ```
 
-## Customizing for a New Store
-
-To rebrand this template for a new store, edit **only** these files:
+## Customizing Content
 
 | What to change | Where |
 |---|---|
-| Company name, contact, social | `data/company.ts` |
+| Company name, contact | `data/company.ts` |
 | Brand colors | `styles/theme.ts` + `app/globals.css` |
 | Navigation & footer links | `data/navigation.ts` |
 | Categories | `data/categories.ts` |
@@ -49,46 +45,23 @@ To rebrand this template for a new store, edit **only** these files:
 | Category images | `public/categories/` |
 | Product images | `public/products/` |
 
-Regenerate placeholder SVGs after changing products:
+Download catalog photography from Unsplash (no API key required for curated photo IDs):
 
 ```bash
-node scripts/generate-images.mjs
-```
-
-## Project Structure
-
-```
-app/                  # Next.js pages (App Router)
-components/
-  navbar/             # Sticky navigation with search
-  footer/             # Four-column footer
-  homepage/           # Homepage sections
-  product/            # Product cards, gallery, quick view
-  cart/               # Cart page
-  checkout/           # Checkout flow
-  shop/               # Shop with filters
-  ui/                 # Reusable UI primitives
-data/                 # All store content (JSON-like TS files)
-lib/                  # Utilities and constants
-hooks/                # Custom React hooks
-context/              # Cart, wishlist, recently viewed
-public/               # Static assets
-styles/               # Theme color tokens
-types/                # TypeScript interfaces
+npm run images:unsplash
 ```
 
 ## Features
 
-- Full homepage with 12 sections (hero, categories, deals, best sellers, etc.)
+- Full homepage with performance hero, category tiles, editorial feature, carousels, and brand story
 - Working cart with add/remove/quantity and localStorage persistence
 - Working wishlist with localStorage persistence
 - Live search filtering in navbar and shop page
 - Quick view modal on product cards
-- Product detail page with gallery, accordion, related products
+- Product detail page with gallery, specs, related products
 - Shop page with sidebar filters, sorting, and pagination
-- Checkout with order summary and payment form
+- Demo checkout and account login
 - Fully responsive (mobile, tablet, desktop)
-- 26 products across 6 categories
 
 ## Checkout
 
@@ -96,5 +69,6 @@ Use coupon code `SAVE10` on the cart page for a 10% discount.
 
 ## Brand Colors
 
-- **Primary:** Royal Purple `#7C3AED`
-- **Accent:** Amber `#F59E0B`
+- **Primary:** Near-black `#0B0D10`
+- **Accent:** Electric cobalt `#1E6BFF`
+- **Background:** Cool gray `#F4F5F7`

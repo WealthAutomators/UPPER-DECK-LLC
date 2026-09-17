@@ -35,7 +35,7 @@ export default function LoginPage() {
       )}
 
       <Container className="py-12 md:py-16">
-        <h1 className="text-center text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
+        <h1 className="font-display text-center text-4xl tracking-tight text-foreground md:text-5xl">
           Log in
         </h1>
 

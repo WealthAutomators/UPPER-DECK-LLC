@@ -1,16 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Check } from "lucide-react";
 import { aboutSection } from "@/data/homepage";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 
 export function AboutSection() {
   return (
-    <section className="py-12 md:py-16">
+    <section className="bg-background py-14 md:py-20">
       <Container>
-        <div className="grid items-center gap-10 md:grid-cols-2 lg:gap-16">
-          <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-border shadow-sm">
+        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+          <div className="relative aspect-[4/5] overflow-hidden md:aspect-[4/3]">
             <Image
               src={aboutSection.image}
               alt={aboutSection.title}
@@ -20,17 +19,17 @@ export function AboutSection() {
             />
           </div>
           <div>
-            <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">{aboutSection.title}</h2>
-            <p className="mt-4 leading-relaxed text-muted-foreground">{aboutSection.description}</p>
-            <ul className="mt-6 space-y-3">
+            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent">The approach</p>
+            <h2 className="font-display mt-3 text-4xl md:text-5xl">{aboutSection.title}</h2>
+            <p className="mt-5 leading-relaxed text-muted-foreground">{aboutSection.description}</p>
+            <ul className="mt-8 grid gap-3 sm:grid-cols-2">
               {aboutSection.checklist.map((item) => (
-                <li key={item} className="flex items-start gap-3 text-sm">
-                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                <li key={item} className="border-l-2 border-accent pl-4 text-sm text-foreground">
                   {item}
                 </li>
               ))}
             </ul>
-            <Button asChild size="lg" className="mt-8">
+            <Button asChild size="lg" variant="outline" className="mt-8">
               <Link href={aboutSection.buttonLink}>{aboutSection.buttonText}</Link>
             </Button>
           </div>

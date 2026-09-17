@@ -15,7 +15,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import Image from "next/image";
 
 export function CheckoutForm() {
-  const { items, subtotal, shipping, tax, total } = useCart();
+  const { items, subtotal, shipping, tax, total, isHydrated } = useCart();
   const [sameAsShipping, setSameAsShipping] = useState(true);
   const [showError, setShowError] = useState(false);
 
@@ -25,10 +25,19 @@ export function CheckoutForm() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  if (!isHydrated) {
+    return (
+      <Container className="py-16 text-center">
+        <h1 className="font-display text-4xl">Checkout</h1>
+        <p className="mt-4 text-muted-foreground">Loading cart…</p>
+      </Container>
+    );
+  }
+
   if (items.length === 0) {
     return (
       <Container className="py-16 text-center">
-        <h1 className="text-3xl font-semibold">Checkout</h1>
+        <h1 className="font-display text-4xl">Checkout</h1>
         <p className="mt-4 text-muted-foreground">Your cart is empty.</p>
         <Button asChild size="lg" className="mt-8">
           <Link href="/shop">Continue Shopping</Link>
@@ -56,7 +65,7 @@ export function CheckoutForm() {
       )}
 
       <Container className="py-8 md:py-12">
-      <h1 className="mb-8 text-3xl font-semibold tracking-tight">Checkout</h1>
+      <h1 className="mb-8 font-display text-4xl">Checkout</h1>
 
       <form onSubmit={handlePlaceOrder}>
         <div className="grid gap-10 lg:grid-cols-5">

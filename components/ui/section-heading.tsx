@@ -9,15 +9,17 @@ interface SectionHeadingProps {
   viewMoreText?: string;
   className?: string;
   centered?: boolean;
+  light?: boolean;
 }
 
 export function SectionHeading({
   title,
   subtitle,
   viewMoreLink,
-  viewMoreText = "View More",
+  viewMoreText = "View All",
   className,
   centered = false,
+  light = false,
 }: SectionHeadingProps) {
   return (
     <div
@@ -28,11 +30,22 @@ export function SectionHeading({
       )}
     >
       <div>
-        <h2 className="text-2xl font-semibold tracking-tight text-foreground md:text-3xl">{title}</h2>
-        {subtitle && <p className="mt-2 text-muted-foreground">{subtitle}</p>}
+        <h2
+          className={cn(
+            "font-display text-3xl font-semibold tracking-wide md:text-4xl",
+            light ? "text-white" : "text-foreground"
+          )}
+        >
+          {title}
+        </h2>
+        {subtitle && (
+          <p className={cn("mt-2 max-w-xl text-sm md:text-base", light ? "text-white/75" : "text-muted-foreground")}>
+            {subtitle}
+          </p>
+        )}
       </div>
       {viewMoreLink && (
-        <Button variant="link" asChild className="text-sm font-medium">
+        <Button variant="link" asChild className={cn("text-sm font-medium", light && "text-white")}>
           <Link href={viewMoreLink}>{viewMoreText} →</Link>
         </Button>
       )}

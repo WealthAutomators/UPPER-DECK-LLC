@@ -2,39 +2,44 @@ import { NavLink } from "@/types";
 import { categories } from "./categories";
 
 export const navigationLinks: NavLink[] = [
-  { label: "Home", href: "/" },
   { label: "Shop", href: "/shop" },
+  { label: "New Arrivals", href: "/new-arrivals" },
+  { label: "Best Sellers", href: "/best-sellers" },
   {
-    label: "Categories",
+    label: "Collections",
     href: "/categories",
     children: categories.map((c) => ({
       label: c.name,
       href: `/categories/${c.slug}`,
     })),
   },
-  { label: "New Arrivals", href: "/new-arrivals" },
-  { label: "Best Sellers", href: "/best-sellers" },
+  { label: "Deals", href: "/shop?sale=true" },
   { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
 ];
 
 export const footerLinks = {
-  company: [
-    { label: "About Us", href: "/about" },
-    { label: "Contact Us", href: "/contact" },
-    { label: "Careers", href: "/contact" },
-    { label: "FAQs", href: "/faq" },
+  shop: [
+    { label: "New Arrivals", href: "/new-arrivals" },
+    { label: "Best Sellers", href: "/best-sellers" },
+    { label: "Collections", href: "/categories" },
+    { label: "All Products", href: "/shop" },
   ],
-  customerCare: [
-    { label: "Track Order", href: "/track-order" },
+  explore: [
+    { label: "Performance", href: "/categories/performance" },
+    { label: "Outdoor", href: "/categories/outdoor" },
+    { label: "Travel", href: "/categories/travel" },
+    { label: "Accessories", href: "/categories/accessories" },
+  ],
+  help: [
+    { label: "Contact", href: "/contact" },
+    { label: "Shipping", href: "/shipping" },
     { label: "Returns", href: "/returns" },
-    { label: "Shipping Policy", href: "/shipping" },
-    { label: "Support", href: "/contact" },
+    { label: "FAQ", href: "/faq" },
   ],
-  legal: [
-    { label: "Privacy Policy", href: "/privacy" },
-    { label: "Terms & Conditions", href: "/terms" },
-    { label: "Refund Policy", href: "/refund" },
+  company: [
+    { label: "About", href: "/about" },
+    { label: "Privacy", href: "/privacy" },
+    { label: "Terms", href: "/terms" },
   ],
 };
 

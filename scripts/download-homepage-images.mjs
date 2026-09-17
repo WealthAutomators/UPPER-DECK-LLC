@@ -184,7 +184,7 @@ function loadExistingHashes() {
 
 async function download(url) {
   const res = await fetch(url, {
-    headers: { "User-Agent": "OtanwaCommerce/1.0 (homepage-images)" },
+    headers: { "User-Agent": "UpperDeckLLC/1.0 (homepage-images)" },
     redirect: "follow",
   });
   if (!res.ok) throw new Error(`HTTP ${res.status}`);

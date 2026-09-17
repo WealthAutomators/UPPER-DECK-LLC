@@ -15,7 +15,7 @@ import { QuantitySelector } from "@/components/ui/quantity-selector";
 import { FREE_SHIPPING_THRESHOLD } from "@/lib/constants";
 
 export function CartPageContent() {
-  const { items, removeFromCart, updateQuantity, subtotal, shipping, tax, total } = useCart();
+  const { items, removeFromCart, updateQuantity, subtotal, shipping, tax, total, isHydrated } = useCart();
   const [coupon, setCoupon] = useState("");
   const [couponApplied, setCouponApplied] = useState(false);
 
@@ -28,10 +28,19 @@ export function CartPageContent() {
   const discount = couponApplied ? subtotal * 0.1 : 0;
   const finalTotal = total - discount;
 
+  if (!isHydrated) {
+    return (
+      <Container className="py-16 text-center">
+        <h1 className="font-display text-4xl md:text-5xl">Your Cart</h1>
+        <p className="mt-4 text-muted-foreground">Loading cart…</p>
+      </Container>
+    );
+  }
+
   if (items.length === 0) {
     return (
       <Container className="py-16 text-center">
-        <h1 className="text-3xl font-semibold">Your Cart</h1>
+        <h1 className="font-display text-4xl md:text-5xl">Your Cart</h1>
         <p className="mt-4 text-muted-foreground">Your cart is currently empty.</p>
         <Button asChild size="lg" className="mt-8">
           <Link href="/shop">Continue Shopping</Link>
@@ -42,7 +51,7 @@ export function CartPageContent() {
 
   return (
     <Container className="py-8 md:py-12">
-      <h1 className="mb-8 text-3xl font-semibold tracking-tight">Your Cart</h1>
+      <h1 className="mb-8 font-display text-4xl md:text-5xl">Your Cart</h1>
 
       <div className="grid gap-10 lg:grid-cols-3">
         <div className="lg:col-span-2">
@@ -58,7 +67,7 @@ export function CartPageContent() {
               <div key={item.product.id} className="grid grid-cols-1 gap-4 border-b border-border p-4 last:border-0 md:grid-cols-12 md:items-center">
                 <div className="flex gap-4 md:col-span-6">
                   <Link href={`/product/${item.product.slug}`} className="relative h-20 w-20 shrink-0 overflow-hidden rounded-md border border-border">
-                    <Image src={item.product.images[0]} alt={item.product.name} fill className="object-cover" sizes="80px" />
+                    <Image src={item.product.images[0]} alt={item.product.name} fill className="object-contain bg-muted" sizes="80px" />
                   </Link>
                   <div>
                     <Link href={`/product/${item.product.slug}`} className="text-sm font-medium hover:text-primary">

@@ -1,20 +1,16 @@
-import {
-  Feature,
-  HeroSlide,
-  PromoBanner,
-} from "@/types";
+import { Feature, HeroSlide, PromoBanner } from "@/types";
 
 export const heroSlides: HeroSlide[] = [
   {
     id: "1",
     image: "/hero/hero-1.jpg",
-    headline: "Everything Your Home Needs, All in One Place.",
+    headline: "Built for the next move.",
     description:
-      "Shop electronics, home essentials, toys, beauty products, kitchen accessories and more at prices you'll love.",
-    ctaText: "Shop Collection",
+      "Performance layers, outdoor kit, and everyday carry — assembled for training days, trail days, and everything in between.",
+    ctaText: "Shop the Gear",
     ctaLink: "/shop",
-    secondaryCtaText: "Today's Deals",
-    secondaryCtaLink: "/shop?sale=true",
+    secondaryCtaText: "New Arrivals",
+    secondaryCtaLink: "/new-arrivals",
   },
 ];
 
@@ -22,123 +18,158 @@ export const features: Feature[] = [
   {
     id: "1",
     icon: "truck",
-    title: "Fast Shipping",
-    description: "Free shipping on orders over $75. Delivered in 3–5 business days.",
+    title: "Free Shipping $75+",
+    description: "Standard delivery in 3–5 business days on qualifying orders.",
   },
   {
     id: "2",
     icon: "shield",
     title: "Secure Checkout",
-    description: "Your payment information is protected with industry-standard encryption.",
+    description: "Demo checkout is encrypted and built for a straightforward flow.",
   },
   {
     id: "3",
     icon: "rotate",
-    title: "Easy Returns",
-    description: "Hassle-free 30-day returns on most items. We make it simple.",
+    title: "30-Day Returns",
+    description: "Send unused items back in original packaging within 30 days.",
   },
   {
     id: "4",
     icon: "headphones",
-    title: "Customer Support",
-    description: "Our friendly team is available Mon–Fri to help with orders and questions.",
+    title: "Direct Support",
+    description: "Email the team with order questions and we will follow up.",
   },
   {
     id: "5",
     icon: "star",
-    title: "Trusted Quality",
-    description: "Every product is carefully selected for quality, value, and reliability.",
+    title: "Utility First",
+    description: "Catalog built around movement, outdoor use, and daily carry.",
   },
 ];
 
 export const dealsEndTime = new Date(Date.now() + 1000 * 60 * 60 * 18).toISOString();
 
 export const homepageDealsSlugs = [
-  "wireless-earbuds",
-  "electric-kettle",
-  "air-fryer",
-  "dog-bed",
-  "bath-towel-set",
-  "sunglasses-classic",
+  "ridge-softshell",
+  "storm-packable-shell",
+  "cabin-backpack",
+  "approach-hiking-shoe",
+  "field-sunglasses",
 ] as const;
 
 export const homepageBestsellerSlugs = [
-  "wireless-earbuds",
-  "bluetooth-speaker",
-  "bath-towel-set",
-  "yoga-mat",
-  "kids-learning-tablet",
-  "coffee-grinder",
-  "dog-bed",
-  "electric-kettle",
+  "weekender-duffel",
+  "studio-grip-mat",
+  "heavyweight-hoodie",
+  "trail-28-pack",
+  "court-trainer",
+  "summit-bottle",
+  "lined-training-joggers",
+  "insulated-camp-mug",
 ] as const;
 
 export const homepageFeaturedSlugs = [
-  "wireless-earbuds",
-  "electric-kettle",
-  "bath-towel-set",
-  "kids-learning-tablet",
-  "standing-desk-lamp",
-  "air-fryer",
-  "yoga-mat",
-  "dog-bed",
-  "coffee-grinder",
-  "bluetooth-speaker",
+  "ridge-softshell",
+  "trail-28-pack",
+  "weekender-duffel",
+  "heavyweight-hoodie",
+  "court-trainer",
+  "cast-iron-kettlebell",
+  "everyday-commute-bag",
+  "tempo-knit-tee",
 ] as const;
 
 export const homepageNewArrivalSlugs = [
-  "stem-robot-kit",
-  "vitamin-c-serum-set",
-  "baby-monitor",
-  "foam-roller",
+  "storm-packable-shell",
+  "merino-long-sleeve",
+  "approach-hiking-shoe",
+  "everyday-commute-bag",
+  "packing-cube-trio",
+  "daily-knit-trainer",
+  "weighted-speed-rope",
+  "compact-camp-tent",
+] as const;
+
+export const homepageSecondarySlugs = [
+  "weekender-duffel",
+  "cabin-backpack",
+  "packing-cube-trio",
+  "travel-bottle-set",
+  "packable-day-sack",
 ] as const;
 
 export const promotionalBanner: PromoBanner = {
   id: "1",
-  title: "Upgrade Your Everyday Living",
-  description:
-    "Discover premium products for every room in your home, from smart electronics to comfortable essentials, all in one place.",
-  buttonText: "Shop Deals",
-  buttonLink: "/shop?sale=true",
+  title: "Free shipping on orders $75+",
+  description: "Standard delivery on qualifying orders. New season gear, packed and ready to move.",
+  buttonText: "Shop All Gear",
+  buttonLink: "/shop",
   image: "/banners/featured.jpg",
 };
 
 export const aboutSection = {
-  title: "Shopping Made Easy.",
+  title: "Movement, utility, no extra noise.",
   description:
-    "AAM Partners LLC brings together quality products across multiple categories, helping families find everything they need in one trusted online marketplace. We focus on affordability, reliability, and a smooth shopping experience from browsing to checkout.",
+    "UPPER DECK is built around gear you actually use: training kit, outdoor layers, travel bags, and everyday carry. We focus on clean design, practical construction, and a catalog that covers the week — not a single sport.",
   checklist: [
-    "Wide selection across 12+ categories",
-    "Competitive prices on everyday essentials",
-    "Fast, reliable shipping nationwide",
-    "Dedicated customer support team",
+    "Performance apparel and footwear",
+    "Outdoor and travel systems that pack down",
+    "Training tools for gym and home",
+    "Everyday carry that stays out of the way",
   ],
-  buttonText: "Learn More About Us",
+  buttonText: "Read the Approach",
   buttonLink: "/about",
   image: "/banners/about.jpg",
 };
 
-export const featuredCollection = {
-  title: "Featured Products",
+export const editorialFeature = {
+  eyebrow: "Outdoor",
+  title: "Built for the outdoors.",
   description:
-    "Hand-picked favorites across electronics, home, beauty, and more — everything you need in one marketplace.",
+    "Packs, camp shelters, and trail footwear for days that start on pavement and end on dirt. Built to haul, pack, and keep moving.",
+  ctaText: "Shop Outdoor",
+  ctaLink: "/categories/outdoor",
+  image: "/banners/editorial.jpg",
+  secondaryImage: "/banners/editorial-detail.jpg",
+};
+
+export const secondaryCollection = {
+  eyebrow: "Travel",
+  title: "Travel essentials",
+  description: "Rucksacks, luggage, and carry-on bags for short trips and long weekends.",
+  ctaText: "Shop Travel",
+  ctaLink: "/categories/travel",
+  image: "/banners/travel.jpg",
+};
+
+export const featuredCollection = {
+  title: "Featured Gear",
+  description: "A cross-section of the catalog — training, trail, travel, and daily wear.",
   bannerImage: "/banners/featured.jpg",
-  categorySlug: "electronics",
+  categorySlug: "performance",
 };
 
 export const bestSellerTabs = [
   { label: "All", slug: "all" },
-  { label: "Electronics", slug: "electronics" },
-  { label: "Home & Kitchen", slug: "home-kitchen" },
-  { label: "Beauty", slug: "beauty" },
-  { label: "Sports", slug: "sports-outdoors" },
+  { label: "Performance", slug: "performance" },
+  { label: "Outdoor", slug: "outdoor" },
+  { label: "Training", slug: "training" },
+  { label: "Travel", slug: "travel" },
 ];
 
 export const newsletter = {
-  title: "Get Exclusive Deals Before Everyone Else",
-  description: "Subscribe for discounts, new arrivals, and weekly offers.",
-  placeholder: "Enter your email address",
+  title: "Get the drop.",
+  description: "New gear, new arrivals, and seasonal picks delivered to your inbox.",
+  placeholder: "Enter your email",
   buttonText: "Subscribe",
+};
+
+export const utilityStrip = {
+  items: [
+    "Free shipping on orders $75+",
+    "New season gear is in",
+    "30-day returns",
+  ],
 };
 
 export const sortOptions = [

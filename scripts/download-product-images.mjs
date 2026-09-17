@@ -1,8 +1,6 @@
 /**
  * Downloads product images from Unsplash Search API using product names.
  * Usage: UNSPLASH_ACCESS_KEY=your_key node scripts/download-product-images.mjs
- *
- * Rate limit: 1 search request per product (~26/hour for this catalog).
  */
 import fs from "fs";
 import path from "path";
@@ -22,36 +20,6 @@ function loadEnvLocal() {
     if (match) process.env.UNSPLASH_ACCESS_KEY = match[1].trim();
   }
 }
-
-/** Tailored search terms for better product-relevant results */
-const SEARCH_QUERIES = {
-  "wireless-earbuds": "wireless earbuds product",
-  "bluetooth-speaker": "portable bluetooth speaker",
-  "smart-power-strip": "smart power strip surge protector",
-  "electric-kettle": "electric glass kettle",
-  "air-fryer": "digital air fryer kitchen",
-  "coffee-grinder": "burr coffee grinder",
-  "bath-towel-set": "luxury bath towel set",
-  "shower-caddy-organizer": "shower caddy organizer",
-  "kids-learning-tablet": "kids learning tablet",
-  "stem-robot-kit": "STEM robot building kit toy",
-  "dog-bed": "orthopedic dog bed",
-  "pet-food-storage": "pet food storage container",
-  "vitamin-c-serum-set": "vitamin c skincare serum",
-  "hair-care-bundle": "shampoo conditioner hair care",
-  "yoga-mat": "yoga mat fitness",
-  "resistance-bands-set": "resistance bands exercise",
-  "standing-desk-lamp": "LED desk lamp office",
-  "ergonomic-mouse-pad": "ergonomic mouse pad wrist rest",
-  "leather-wallet": "leather wallet mens",
-  "sunglasses-classic": "polarized sunglasses",
-  "baby-monitor": "video baby monitor",
-  "soft-plush-blanket": "soft baby blanket plush",
-  "building-blocks-set": "building blocks toys children",
-  "board-game-family": "family board game",
-  "foam-roller": "foam roller fitness",
-  "essential-oil-diffuser": "essential oil diffuser",
-};
 
 function parseProducts() {
   const content = fs.readFileSync(path.join(ROOT, "data", "products.ts"), "utf8");
@@ -101,7 +69,7 @@ async function searchPhotos(accessKey, query, perPage = 2) {
 
 async function downloadImage(url) {
   const res = await fetch(url, {
-    headers: { "User-Agent": "AAMPartnersLLC/1.0 (product-images)" },
+    headers: { "User-Agent": "UpperDeckLLC/1.0 (product-images)" },
     redirect: "follow",
   });
   if (!res.ok) throw new Error(`Download HTTP ${res.status}`);
@@ -111,7 +79,7 @@ async function downloadImage(url) {
 }
 
 function buildQuery(product) {
-  return SEARCH_QUERIES[product.slug] || product.name;
+  return product.name;
 }
 
 async function fetchImagesForProduct(accessKey, product, usedPhotoIds) {
@@ -144,7 +112,7 @@ async function main() {
   }
 
   const products = parseProducts();
-  console.log(`Fetching images for ${products.length} products (${products.length} API searches)...\n`);
+  console.log(`Fetching images for ${products.length} products...\n`);
 
   const usedPhotoIds = new Set();
   const usedHashes = new Set();

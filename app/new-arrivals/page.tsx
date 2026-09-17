@@ -11,8 +11,8 @@ export default function NewArrivalsPage() {
 
   return (
     <Container className="py-8 md:py-12">
-      <h1 className="text-3xl font-semibold tracking-tight">New Arrivals</h1>
-      <p className="mt-2 text-muted-foreground">Discover our latest additions</p>
+      <h1 className="font-display text-4xl md:text-5xl">New Arrivals</h1>
+      <p className="mt-2 text-muted-foreground">Fresh drops across outdoor, apparel, training, and travel.</p>
       <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 lg:gap-6">
         {products.map((product) => (
           <ProductCard key={product.id} product={product} />

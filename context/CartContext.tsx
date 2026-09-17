@@ -28,7 +28,7 @@ interface CartContextType {
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export function CartProvider({ children }: { children: ReactNode }) {
-  const [storedItems, setStoredItems, isHydrated] = useLocalStorage<StoredCartItem[]>("aam-partners-cart", []);
+  const [storedItems, setStoredItems, isHydrated] = useLocalStorage<StoredCartItem[]>("upper-deck-cart", []);
 
   const items: CartItem[] = useMemo(() => {
     return storedItems

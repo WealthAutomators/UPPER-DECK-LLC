@@ -1,5 +1,5 @@
 /**
- * Downloads unique Unsplash images for AAM Partners LLC marketplace.
+ * Downloads unique Unsplash images for UPPER DECK LLC.
  * Hero, categories, banners, products (×2), and review photos.
  */
 import fs from "fs";
@@ -11,265 +11,118 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..");
 const PUBLIC = path.join(ROOT, "public");
 
-/** Curated Unsplash photo IDs grouped by theme */
-const POOLS = {
-  hero: [
-    "photo-1618221195710-e982f1f8752b",
-    "photo-1600585154526-990dced4db0d",
-    "photo-1616486327342-c4ada60c33e5",
-  ],
-  electronics: [
-    "photo-1505740100551-4242580be354",
-    "photo-1593642532823-8fa782be72a5",
-    "photo-1527814050087-3793815478db",
-    "photo-1608043152269-423dbba4e7e1",
-    "photo-1572569511254-d8f925fe2cbb",
-    "photo-1543515245-324be289ddeb",
-    "photo-1484704849700-f032a568e944",
-    "photo-1583394838336-acd9777362a6",
-    "photo-1625728744080-077785a06511",
-    "photo-1590658268037-6bf12165a509",
-  ],
-  homeKitchen: [
-    "photo-1556911221-bff31c812bea",
-    "photo-1570172619644-df0cb7bf0a08",
-    "photo-1585515320310-259814833e95",
-    "photo-1556912172-2b0c790c0b4f",
-    "photo-1558618666-fcd25c85cd64",
-    "photo-1517668808822-9ebb02f2a0e6",
-    "photo-1570222096853-7762faff523e",
-    "photo-1585515680365-986b5a5d267a",
-    "photo-1556909114-f6e7ad7d5046",
-    "photo-1556909174-fda3ad7c4d37",
-  ],
-  bathroom: [
-    "photo-1584622650111-993a426fbf0a",
-    "photo-1616486338812-3dadae4b4ace",
-    "photo-1620626011764-996317b8d101",
-    "photo-1631889992164-882aae16d807",
-    "photo-1600566753190-17fedebaa088",
-  ],
-  toys: [
-    "photo-1503454535920-2a2bab2645a2",
-    "photo-1558068710-1c8e0857584f",
-    "photo-1515488042361-ee00e5178171",
-    "photo-1587654780291-39c9404d746b",
-    "photo-1596462502278-27bfdc403348",
-    "photo-1566576912321-d58ddd7a6088",
-    "photo-1558618666-fcd25c85cd64",
-  ],
-  pets: [
-    "photo-1583511655852-d21ac8a622af",
-    "photo-1601758228041-f3b2795255f1",
-    "photo-1548199973-03cce0cfb87f",
-    "photo-1450778869180-41d0601e046e",
-    "photo-1516734212186-a967f81ad0d4",
-  ],
-  beauty: [
-    "photo-1522335780783-8b0812a2bb33",
-    "photo-1596462502278-27bfdc403348",
-    "photo-1570172619644-df0cb7bf0a08",
-    "photo-1556228720-195a672e8a03",
-    "photo-1620916566561-42b1d7f8d5b3",
-    "photo-1612817288484-6f916006177a",
-  ],
-  sports: [
-    "photo-1592432670736-3299669ea351",
-    "photo-1571019614242-c5c5dee9f50b",
-    "photo-1544367567-0f2fcb009e0b",
-    "photo-1518611012118-696072aa579a",
-    "photo-1517836357463-d25dfeac3438",
-    "photo-1576678927484-cc907957088c",
-  ],
-  office: [
-    "photo-1507003211169-0a1dd7228f2d",
-    "photo-1497366216548-37526070297c",
-    "photo-1486312338219-ce68d2c6f44d",
-    "photo-1524758631624-e2822e304c36",
-    "photo-1593062096039-9a26b09da705",
-    "photo-1586281380349-632531db7ed4",
-  ],
-  fashion: [
-    "photo-1527864550417-8fd665563061",
-    "photo-1572635196237-14bfbfe68983",
-    "photo-1523275335684-37898b6baf30",
-    "photo-1434389677669-e08b4cac3105",
-    "photo-1553062407-98eeb64c6a62",
-  ],
-  baby: [
-    "photo-1515488042361-ee00e5178171",
-    "photo-1555252337-59f4fe5e5c77",
-    "photo-1519689680058-324335c77eba",
-    "photo-1587654780291-39c9404d746b",
-    "photo-1596462502278-27bfdc403348",
-  ],
-  health: [
-    "photo-1608571428392-a4c1a89f9949",
-    "photo-1601925265168-242426a8c117",
-    "photo-1544367567-0f2fcb009e0b",
-    "photo-1506126613408-eca07ce68773",
-    "photo-1512621776951-a57141f2eefd",
-  ],
-  lifestyle: [
-    "photo-1607082348824-0a6f2a591e89",
-    "photo-1600880292089-3d770f7eefb9",
-    "photo-1560448204-e02f11c2d0e2",
-    "photo-1502672260266-1c1ef1d93688",
-    "photo-1555042879-3bbffead5596",
-    "photo-1516975080662-de93384bdaf7",
-    "photo-1600210492486-724fe5c67fb0",
-    "photo-1560448075-71d129397b25",
-    "photo-1600607687939-ce8a6c25118c",
-    "photo-1600566753086-00f18fb6b3ea",
-    "photo-1600585154340-be6161a56a0c",
-    "photo-1631049307264-da0ec9d70304",
-    "photo-1615873964743-90a0b759fc5e",
-    "photo-1600607687644-c7171b42498b",
-    "photo-1586023496775-813d975d5192",
-    "photo-1564071665922-072f0d6f6bd8",
-    "photo-1600585152915-d208bec867a1",
-    "photo-1600607687920-4e2a09cf159d",
-    "photo-1600585154363-67eb9e2e2099",
-    "photo-1505693416388-ac5ce068fe85",
-    "photo-1595526114035-0d45ed16cfbf",
-    "photo-1604014237800-1c9102c219da",
-    "photo-1581578731548-c64695cc6952",
-    "photo-1555041169-4ebf927d8357",
-    "photo-1585412727319-8e4b7b5c0b0e",
-    "photo-1600185365483-26edb4bd4c45",
-    "photo-1628177150159-2f8ce6df1f1e",
-    "photo-1583847260160-a63b3f677b9a",
-    "photo-1563453397-107a7c3efb2e",
-    "photo-1661940968217-583e272f6fc6",
-    "photo-1725901056426-de7ba9b652e8",
-    "photo-1733514432941-6a6954b67d0a",
-    "photo-1684445034670-b36aca25c25a",
-    "photo-1677354538246-c533b035ae5c",
-    "photo-1670930887547-518452a967fb",
-    "photo-1664372899275-05bdd18c8516",
-    "photo-1679064287065-66207aa15ab7",
-    "photo-1676638155455-7db84193f440",
-    "photo-1674747086448-2270b41ac808",
-    "photo-1556228453-efd6c1ff04f6",
-    "photo-1587043862100-01920db231ba",
-    "photo-1496890185067-72d7d9af66b1",
-    "photo-1589898362790-edba11d34869",
-    "photo-1596683705523-eb49540c3934",
-    "photo-1602658327972-85bb6521a086",
-    "photo-1603400522537-35e25a14bc1e",
-    "photo-1616663717839-2fea42e1a1f6",
-    "photo-1619263719761-165c773ee5df",
-    "photo-1620000190821-abd8f262b86f",
-    "photo-1630381260593-45e8f922997b",
-    "photo-1639298107786-fc9e5880016f",
-    "photo-1639298109207-5a9ccc254481",
-    "photo-1666934209606-a955a12edd63",
-    "photo-1674924389976-005a3dba2896",
-    "photo-1687951812646-efa29195a80d",
-    "photo-1724847885015-be191f1a47ef",
-    "photo-1523471826770-c437b4636fe6",
-    "photo-1558505780-1e584fab3ede",
-    "photo-1574421233376-06f2ccf017f7",
-    "photo-1590439471364-192aa70c0b53",
-    "photo-1609840112990-4265448268d1",
-    "photo-1616627502968-858f7b39f574",
-    "photo-1617811449482-31093c8cee16",
-    "photo-1621468644541-deea173bd43e",
-    "photo-1638232928539-6e91c47ddec5",
-    "photo-1639298107851-058984903954",
-    "photo-1650481093978-6cc58e4649f4",
-    "photo-1533759413974-9e15f3b745ac",
-    "photo-1595182939836-5d4ba24ae7bf",
-    "photo-1608651061499-ff031fbf6645",
-    "photo-1664881353843-769f951ff470",
-    "photo-1700590906201-2739ba9efbe9",
-    "photo-1707291173710-10514ef55814",
-    "photo-1716078103276-133ae3e98424",
-    "photo-1571896349842-33c89424de2d",
-    "photo-1560185127-6ed189bf02f4",
-    "photo-1615529328331-f8917597711f",
-    "photo-1556228578-8c89e6adf883",
-    "photo-1540555700478-4be289fbecef",
-    "photo-1600566752355-35792bedcfea",
-    "photo-1596394516093-87feb5cb33dd",
-    "photo-1519823551278-64ae032d27e0",
-    "photo-1600047509807-ba8f88d3cdf7",
-    "photo-1631679705879-a6ba6902b779",
-    "photo-1523481400522-73651ccf5d4b",
-    "photo-1513693902810-1b7c3ceaa280",
-    "photo-1600573472592-401b489b3cdc",
-    "photo-1584622781867-0d7f090daa3e",
-    "photo-1600607688969-a5bfcd6461fe",
-    "photo-1515377905543-f15e52645c35",
-    "photo-1507652313519-d4e9174996ca",
-    "photo-1552320884-9c4fef4ef589",
-    "photo-1595514537822-8e284785127e",
-    "photo-1527515637465-c94e0ddbfe09",
-    "photo-1616628188855-8c7a03445b07",
-    "photo-1512621776951-a57141f2eefd",
-    "photo-1611892440509-7a25aafad115",
-  ],
+const PRODUCT_IMAGES = {
+  "tempo-knit-tee": ["photo-1521572163474-6864f9cf17ab", "photo-1583743814966-8936f5b7be1a"],
+  "motion-training-shorts": ["photo-1591195853828-11db59a44f6b", "photo-1515886657613-9f3515b0c78f"],
+  "ridge-softshell": ["photo-1591047139829-d91aecb6caea", "photo-1544022613-e87ca75a784a"],
+  "pulse-cap": ["photo-1588850561407-ed78c282e89b", "photo-1521369909029-2afed882baee"],
+  "charge-crew-socks": ["photo-1586350977771-b3b0abd50c37", "photo-1580906853132-f15cae870c64"],
+  "trail-28-pack": ["photo-1553062407-98eeb64c6a62", "photo-1501555085422-7ae57c8d6c6d"],
+  "summit-bottle": ["photo-1602143407151-7111542de6e8", "photo-1523362628745-0c100150b504"],
+  "compact-camp-tent": ["photo-1504280390367-361c6d9f38f4", "photo-1478131143081-80f7f84ca84d"],
+  "storm-packable-shell": ["photo-1544923246-77307dd6542d", "photo-1521223890158-f9f7c3d5d504"],
+  "trail-camp-light": ["photo-1504851149312-7a075b496cc7", "photo-1445308394109-0bf7df30521b"],
+  "studio-grip-mat": ["photo-1592432670736-3299669ea351", "photo-1544367567-0f2fcb009e0b"],
+  "five-loop-bands": ["photo-1517836357463-d25dfeac3438", "photo-1598289431512-b97b0917affc"],
+  "recovery-foam-roller": ["photo-1571019614242-c5c5dee9f50b", "photo-1601925265168-242426a8c117"],
+  "weighted-speed-rope": ["photo-1518611012118-696072aa579a", "photo-1434596922112-19c563067271"],
+  "cast-iron-kettlebell": ["photo-1517963879433-6ad2b056d712", "photo-1576678927484-cc907957088c"],
+  "weekender-duffel": ["photo-1547949003-9792a18a2601", "photo-1565026057447-bc90a3dceb87"],
+  "packing-cube-trio": ["photo-1553413077-190dd305871c", "photo-1581553680321-4fffae59fccd"],
+  "cabin-backpack": ["photo-1491637639811-60e2756cc1c7", "photo-1622560480605-d83c853bc5c3"],
+  "travel-dopp-kit": ["photo-1581605405669-fdf9368a9878", "photo-1596462502278-27bfdc403348"],
+  "packable-day-sack": ["photo-1506318137071-3d4d0ce2ee1b", "photo-1473186578142-8404ed065627"],
+  "heavyweight-hoodie": ["photo-1556821840-3a63f95609a7", "photo-1509942774463-acf339cf87d5"],
+  "merino-long-sleeve": ["photo-1434389677669-e08b4cac3105", "photo-1618354691373-d851c5c3a990"],
+  "trail-quarter-zip": ["photo-1620799140408-edc6dcb6d633", "photo-1578768079052-aa76e1699ae1"],
+  "everyday-knit-polo": ["photo-1581655353564-df123a1eb820", "photo-1617137984095-74e4e5e3613f"],
+  "lined-training-joggers": ["photo-1552902865-b72c031ac5ea", "photo-1506629082955-511b1aa562c8"],
+  "court-trainer": ["photo-1460353581641-37baddab0fa2", "photo-1560769629-975ec94e6a86"],
+  "ridge-trail-runner": ["photo-1606107557195-0e29a4b5b4aa", "photo-1542291026-7eec264c27ff"],
+  "rest-slide": ["photo-1603808033192-082d6919d3e1", "photo-1562273138-f46be4ebdf33"],
+  "approach-hiking-shoe": ["photo-1520219306100-ec4afeeefe58", "photo-1551107696-a4b0c5a0d9a2"],
+  "daily-knit-trainer": ["photo-1595950653106-6c9ebd614d3a", "photo-1549298916-b41d501d3772"],
+  "field-sunglasses": ["photo-1511499767150-a48a237f0083", "photo-1572635196237-14bfbfe68983"],
+  "watch-cap-beanie": ["photo-1576871337622-98d48d1cf531", "photo-1510595418814-38df85230999"],
+  "insulated-camp-mug": ["photo-1544148103-0773bf10d330", "photo-1577937927823-6d9253853f1e"],
+  "microfiber-gym-towel": ["photo-1571902943202-507ec2618e8f", "photo-1534438327276-14e5300c3a48"],
+  "training-grip-gloves": ["photo-1483104874007-4ecec25d4fc2", "photo-1583472607433-64bddc025cf2"],
+  "slim-field-wallet": ["photo-1627123424574-724758594e93", "photo-1563013544-824ae1b704d3"],
+  "everyday-sling": ["photo-1548036328-09df44490dd9", "photo-1590874103328-eac38a941956"],
+  "tech-organizer-pouch": ["photo-1484480974693-6ca0a78fb36b", "photo-1586075010923-2ddab37a3e8f"],
+  "compact-field-light": ["photo-1595433707802-6b2626ef1c36", "photo-1513828583688-c52646dbbfd4"],
+  "trail-carabiner-set": ["photo-1522163182402-834f871d8b0d", "photo-1464822759023-fed622ff2c3b"],
 };
 
-const CATEGORY_SLUG_POOL = {
-  electronics: POOLS.electronics,
-  "home-kitchen": POOLS.homeKitchen,
-  bathroom: POOLS.bathroom,
-  "educational-toys": POOLS.toys,
-  "pet-supplies": POOLS.pets,
-  beauty: POOLS.beauty,
-  "sports-outdoors": POOLS.sports,
-  "office-supplies": POOLS.office,
-  "fashion-accessories": POOLS.fashion,
-  "baby-products": POOLS.baby,
-  "toys-games": POOLS.toys,
-  "health-wellness": POOLS.health,
-};
+const SITE_IMAGES = [
+  { file: "hero/hero-1.jpg", width: 2000, photoId: "photo-1476480862126-209bfaa8edc8" },
+  { file: "banners/about.jpg", width: 1600, photoId: "photo-1571019613454-1cb2f99b2d8b" },
+  { file: "banners/featured.jpg", width: 1600, photoId: "photo-1517837801035-3514370dcd74" },
+  { file: "banners/editorial.jpg", width: 1600, photoId: "photo-1551632811-561732d1e306" },
+  { file: "banners/editorial-detail.jpg", width: 1200, photoId: "photo-1483721310020-03333e577066" },
+  { file: "banners/travel.jpg", width: 1600, photoId: "photo-1469854523086-cc02fe5d8800" },
+  { file: "categories/performance.jpg", width: 900, photoId: "photo-1571008887538-b36bb32f4571" },
+  { file: "categories/outdoor.jpg", width: 900, photoId: "photo-1501554728187-ce583db5c2c2" },
+  { file: "categories/training.jpg", width: 900, photoId: "photo-1534438327276-14e5300c3a48" },
+  { file: "categories/travel.jpg", width: 900, photoId: "photo-1488646953014-85cb44e3f2ea" },
+  { file: "categories/apparel.jpg", width: 900, photoId: "photo-1489987707025-9413ea3494b0" },
+  { file: "categories/footwear.jpg", width: 900, photoId: "photo-1491553895911-0055eca6402d" },
+  { file: "categories/accessories.jpg", width: 900, photoId: "photo-1473496169904-658ba7c44d8a" },
+  { file: "categories/everyday-carry.jpg", width: 900, photoId: "photo-1523275335684-37898b6baf30" },
+];
 
-/** Explicit primary image per product slug for visual relevance */
-const PRODUCT_PRIMARY = {
-  "wireless-earbuds": "photo-1590658268037-6bf12165a509",
-  "bluetooth-speaker": "photo-1608043152269-423dbba4e7e1",
-  "smart-power-strip": "photo-1625728744080-077785a06511",
-  "electric-kettle": "photo-1585515320310-259814833e95",
-  "air-fryer": "photo-1585515680365-986b5a5d267a",
-  "coffee-grinder": "photo-1517668808822-9ebb02f2a0e6",
-  "bath-towel-set": "photo-1584622650111-993a426fbf0a",
-  "shower-caddy-organizer": "photo-1616486338812-3dadae4b4ace",
-  "kids-learning-tablet": "photo-1503454535920-2a2bab2645a2",
-  "stem-robot-kit": "photo-1558068710-1c8e0857584f",
-  "dog-bed": "photo-1583511655852-d21ac8a622af",
-  "pet-food-storage": "photo-1601758228041-f3b2795255f1",
-  "vitamin-c-serum-set": "photo-1620916566561-42b1d7f8d5b3",
-  "hair-care-bundle": "photo-1522335780783-8b0812a2bb33",
-  "yoga-mat": "photo-1592432670736-3299669ea351",
-  "resistance-bands-set": "photo-1571019614242-c5c5dee9f50b",
-  "standing-desk-lamp": "photo-1507003211169-0a1dd7228f2d",
-  "ergonomic-mouse-pad": "photo-1497366216548-37526070297c",
-  "leather-wallet": "photo-1527864550417-8fd665563061",
-  "sunglasses-classic": "photo-1572635196237-14bfbfe68983",
-  "baby-monitor": "photo-1555252337-59f4fe5e5c77",
-  "soft-plush-blanket": "photo-1519689680058-324335c77eba",
-  "building-blocks-set": "photo-1587654780291-39c9404d746b",
-  "board-game-family": "photo-1611892440509-7a25aafad115",
-  "foam-roller": "photo-1601925265168-242426a8c117",
-  "essential-oil-diffuser": "photo-1608571428392-a4c1a89f9949",
-};
-
-const CATEGORY_IMAGES = {
-  electronics: "photo-1505740100551-4242580be354",
-  "home-kitchen": "photo-1556911221-bff31c812bea",
-  bathroom: "photo-1620626011764-996317b8d101",
-  "educational-toys": "photo-1566576912321-d58ddd7a6088",
-  "pet-supplies": "photo-1548199973-03cce0cfb87f",
-  beauty: "photo-1612817288484-6f916006177a",
-  "sports-outdoors": "photo-1518611012118-696072aa579a",
-  "office-supplies": "photo-1486312338219-ce68d2c6f44d",
-  "fashion-accessories": "photo-1523275335684-37898b6baf30",
-  "baby-products": "photo-1515488042361-ee00e5178171",
-  "toys-games": "photo-1558068710-1c8e0857584f",
-  "health-wellness": "photo-1506126613408-eca07ce68773",
-};
+const FALLBACK_POOL = [
+  "photo-1461896836934-ffe607ba6851",
+  "photo-1517649763962-0c623066027b",
+  "photo-1552674605-db6ffd4facb5",
+  "photo-1571019613454-1cb2f99b2d8b",
+  "photo-1534438327276-14e5300c3a48",
+  "photo-1517963879433-6ad2b056d712",
+  "photo-1541534741688-6078c6bfb5c5",
+  "photo-1518611012118-696072aa579a",
+  "photo-1476480862126-209bfaa8edc8",
+  "photo-1483721310020-03333e577066",
+  "photo-1551632811-561732d1e306",
+  "photo-1504280390367-361c6d9f38f4",
+  "photo-1522163182402-834f871d8b0d",
+  "photo-1547949003-9792a18a2601",
+  "photo-1553062407-98eeb64c6a62",
+  "photo-1602143407151-7111542de6e8",
+  "photo-1592432670736-3299669ea351",
+  "photo-1460353581641-37baddab0fa2",
+  "photo-1511499767150-a48a237f0083",
+  "photo-1556821840-3a63f95609a7",
+  "photo-1588850561407-ed78c282e89b",
+  "photo-1576678927484-cc907957088c",
+  "photo-1506126613408-eca07ce68773",
+  "photo-1518611012118-696072aa579a",
+  "photo-1520219306100-ec4afeeefe58",
+  "photo-1542291026-7eec264c27ff",
+  "photo-1595950653106-6c9ebd614d3a",
+  "photo-1627123424574-724758594e93",
+  "photo-1548036328-09df44490dd9",
+  "photo-1581655353564-df123a1eb820",
+  "photo-1434389677669-e08b4cac3105",
+  "photo-1509942774463-acf339cf87d5",
+  "photo-1571902943202-507ec2618e8f",
+  "photo-1483104874007-4ecec25d4fc2",
+  "photo-1544148103-0773bf10d330",
+  "photo-1576871337622-98d48d1cf531",
+  "photo-1517836357463-d25dfeac3438",
+  "photo-1603808033192-082d6919d3e1",
+  "photo-1491637639811-60e2756cc1c7",
+  "photo-1553413077-190dd305871c",
+  "photo-1469854523086-cc02fe5d8800",
+  "photo-1488646953014-85cb44e3f2ea",
+  "photo-1501554728187-ce583db5c2c2",
+  "photo-1571008887538-b36bb32f4571",
+  "photo-1544367567-0f2fcb009e0b",
+  "photo-1591195853828-11db59a44f6b",
+  "photo-1521572163474-6864f9cf17ab",
+  "photo-1544923246-77307dd6542d",
+  "photo-1504851149312-7a075b496cc7",
+  "photo-1445308394109-0bf7df30521b",
+];
 
 function unsplashUrl(photoId, width) {
   return `https://images.unsplash.com/${photoId}?fm=jpg&q=85&w=${width}&auto=format&fit=crop`;
@@ -282,8 +135,7 @@ function parseProducts() {
 
   for (const block of blocks.slice(1)) {
     const slug = block.match(/slug: "([^"]+)"/)?.[1];
-    const categorySlug = block.match(/categorySlug: "([^"]+)"/)?.[1];
-    if (slug && categorySlug) products.push({ slug, categorySlug });
+    if (slug) products.push({ slug });
   }
 
   return products;
@@ -291,41 +143,27 @@ function parseProducts() {
 
 function buildTargets() {
   const products = parseProducts();
-  const targets = [];
-
-  targets.push({ file: "hero/hero-1.jpg", width: 2000, photoId: POOLS.hero[0] });
-  targets.push({ file: "banners/about.jpg", width: 1600, photoId: "photo-1607082348824-0a6f2a591e89" });
-  targets.push({ file: "banners/featured.jpg", width: 1600, photoId: "photo-1616486327342-c4ada60c33e5" });
-
-  for (const [slug, photoId] of Object.entries(CATEGORY_IMAGES)) {
-    targets.push({ file: `categories/${slug}.jpg`, width: 800, photoId });
-  }
+  const targets = [...SITE_IMAGES];
 
   for (const product of products) {
-    const primaryId = PRODUCT_PRIMARY[product.slug];
-    const pool = CATEGORY_SLUG_POOL[product.categorySlug] || POOLS.lifestyle;
-    const secondaryId = pool.find((id) => id !== primaryId) || pool[1] || pool[0];
-
+    const pair = PRODUCT_IMAGES[product.slug] || [];
     targets.push({
       file: `products/${product.slug}-1.jpg`,
       width: 900,
-      photoId: primaryId,
-      categorySlug: product.categorySlug,
+      photoId: pair[0] || FALLBACK_POOL[0],
     });
     targets.push({
       file: `products/${product.slug}-2.jpg`,
       width: 900,
-      photoId: secondaryId,
-      categorySlug: product.categorySlug,
+      photoId: pair[1] || FALLBACK_POOL[1],
     });
   }
 
-  const reviewPool = [...POOLS.lifestyle, ...POOLS.electronics, ...POOLS.homeKitchen];
   for (let i = 1; i <= 8; i++) {
     targets.push({
       file: `reviews/review-${i}.jpg`,
       width: 600,
-      photoId: reviewPool[i - 1] || reviewPool[0],
+      photoId: FALLBACK_POOL[i + 4],
     });
   }
 
@@ -334,7 +172,7 @@ function buildTargets() {
 
 async function download(url) {
   const res = await fetch(url, {
-    headers: { "User-Agent": "AAMPartnersLLC/1.0 (image-setup)" },
+    headers: { "User-Agent": "UpperDeckLLC/1.0 (image-setup)" },
     redirect: "follow",
   });
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -343,22 +181,17 @@ async function download(url) {
   return buf;
 }
 
-function getFallbackPool() {
-  return [...new Set(Object.values(POOLS).flat())];
-}
-
 async function main() {
   const targets = buildTargets();
   console.log(`Downloading ${targets.length} Unsplash images...\n`);
 
   const usedPhotoIds = new Set();
   const usedHashes = new Set();
-  const fallbackPool = getFallbackPool();
   let fallbackIndex = 0;
 
   const getFallback = (exclude) => {
-    while (fallbackIndex < fallbackPool.length) {
-      const id = fallbackPool[fallbackIndex++];
+    while (fallbackIndex < FALLBACK_POOL.length) {
+      const id = FALLBACK_POOL[fallbackIndex++];
       if (!usedPhotoIds.has(id) && id !== exclude) return id;
     }
     return null;

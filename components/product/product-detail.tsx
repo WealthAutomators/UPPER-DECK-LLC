@@ -64,19 +64,20 @@ export function ProductDetail({ product }: ProductDetailProps) {
           <ProductGallery images={product.images} name={product.name} />
 
           <div className="flex flex-col">
-            <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
               {product.category}
             </p>
-            <h1 className="mt-2 text-2xl font-semibold tracking-tight md:text-3xl lg:text-4xl">
+            <h1 className="font-display mt-2 text-3xl md:text-4xl lg:text-5xl">
               {product.name}
             </h1>
+            {product.tagline && <p className="mt-2 text-muted-foreground">{product.tagline}</p>}
 
             <StarRating rating={product.rating} reviews={product.reviews} className="mt-4" size="md" />
 
             <div className="mt-6 flex flex-wrap items-center gap-3">
               {hasDiscount ? (
                 <>
-                  <span className="text-3xl font-semibold text-accent">
+                  <span className="text-3xl font-semibold">
                     {formatPrice(product.salePrice!)}
                   </span>
                   <span className="text-xl text-muted-foreground line-through">
@@ -94,7 +95,7 @@ export function ProductDetail({ product }: ProductDetailProps) {
               <span className="text-sm text-muted-foreground">
                 {product.stock > 0 ? (
                   <span className="flex items-center gap-1.5">
-                    <span className="h-2 w-2 rounded-full bg-primary" />
+                    <span className="h-2 w-2 rounded-full bg-accent" />
                     {product.stock} in stock
                   </span>
                 ) : (
@@ -160,7 +161,7 @@ export function ProductDetail({ product }: ProductDetailProps) {
 
         <div className="mt-16 space-y-12">
           <section>
-            <h2 className="text-xl font-semibold md:text-2xl">Product Description</h2>
+            <h2 className="font-display text-2xl md:text-3xl">Product Description</h2>
             <p className="mt-4 max-w-3xl leading-relaxed text-muted-foreground">{product.description}</p>
             <ul className="mt-6 grid gap-2 sm:grid-cols-2">
               {product.features.map((feature) => (
@@ -173,7 +174,7 @@ export function ProductDetail({ product }: ProductDetailProps) {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold md:text-2xl">Specifications</h2>
+            <h2 className="font-display text-2xl md:text-3xl">Specifications</h2>
             <dl className="mt-4 max-w-lg divide-y divide-border rounded-lg border border-border">
               {Object.entries(product.specifications).map(([key, value]) => (
                 <div key={key} className="flex justify-between px-4 py-3 text-sm">
